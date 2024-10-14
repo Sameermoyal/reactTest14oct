@@ -1,0 +1,205 @@
+Question 1: Toggle Between Light and Dark Mode Using Custom Hook
+
+--------App.jsx-------------
+
+import React from 'react'
+import Theme from './Theme'
+import Display from './Display'
+function App() {
+  return (
+    <>
+   
+    <Theme/>
+    </>
+  )
+}
+
+export default App
+
+
+--------------Theme.jsx-----------
+
+
+import React from 'react'
+import UseThemeToggle from './UseThemeToggle '
+function Theme() {
+   const[isToggle,toggle]=UseThemeToggle()
+
+  return (
+    <>
+    <button onClick={toggle}>Change Theme</button>
+    <p style={{ backgroundColor: isToggle ? 'white' : 'black',
+        color: isToggle ? 'black' : 'white' , width: '100%',
+        height: '100vh', 
+        margin: 0}}>
+      {isToggle ? 'Light Theme' : 'Dark Theme'}
+    </p>
+    
+  </>
+  )
+}
+
+export default Theme
+
+
+
+--------------------UseThemeToggle.jsx---------
+
+import React, { useState } from 'react'
+
+
+
+function UseThemeToggle () {
+ const[isToggle,setIsToggle]=useState(true)
+ const toggle =()=>{
+    setIsToggle(!isToggle)
+ }
+
+
+  return (
+    
+   [isToggle,toggle]
+  )
+}
+
+export default UseThemeToggle 
+
+
+
+
+
+
+
+
+
+
+Question 2: Custom Hook for Toggling Display Modes
+
+
+
+
+
+---------------App.jsx----------
+
+
+import React from 'react'
+import Theme from './Theme'
+import Display from './Display'
+function App() {
+  return (
+    <>
+    <Display />
+   
+    </>
+  )
+}
+
+export default App
+
+
+
+
+
+-----------------Display.jsx-----------------
+
+
+import React from 'react';
+import useDisplayToggle from './UseDisplayToggle'; 
+
+function DisplayComponent() {
+  const [viewMode, toggleViewMode] = useDisplayToggle(); 
+  const items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5'];
+
+  return (
+    <div>
+      
+      <button onClick={toggleViewMode}>{viewMode}</button>
+
+      
+      <div
+        style={{
+          display: viewMode === 'grid' ? 'grid' : 'block',
+          gridTemplateColumns: viewMode === 'grid' ? 'repeat(2, 1fr)' : 'none',
+          gap: '10px',
+        }}
+      >
+    
+        {items.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              border: '1px solid black',
+               textAlign: 'center',
+                marginBottom :'5px',
+               padding:'5px'
+            }}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default DisplayComponent;
+
+
+
+
+
+-------------UseDisplayToggle.jsx ----------
+
+
+
+import React, { useState } from 'react'
+
+function UseThemeToggle (initialView = 'list') {
+ const[viewMode, setViewMode]=useState(initialView)
+ const mode =()=>{
+    setViewMode((prevView) => (prevView === 'list' ? 'grid' : 'list'));
+ }
+
+
+  return (
+    
+   [viewMode,mode]
+  )
+}
+
+export default UseThemeToggle 
+
+
+
+
+
+
+
+
+Question-3.
+Write all the step of redux toolkit in brief.
+
+
+
+
+
+
+
+Write all the step of redux toolkit in brief.
+
+
+1.firstly install redux and reduxe tooljit in our project
+
+2.crete Store.jsx file  and import store in main.js file
+
+3.now we will give the access of store to our main.jsx file using provider.
+
+4.now we will pass store as a prop in provider.
+
+5.now we will create a slice file in which we will write our logic.
+
+6.now we will import and initialize slice in store.
+
+7.now when we want to use state we can import them in any component and we also need useSelector and useDispatch hooks to work with them.
+
+8.useSelector used to get our state from store and useDispatch use to update it according user input. 
